@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutQuill.cshtml";
+}
+
+<div ng-controller="Employees">
+    <ul>
+        <li ng-repeat="employee in EmployeeList">
+            <div>
+                <label>{{employee.id}}</label>
+                <input type="text" ng-model="employee.firstName" />
+                <input type="text" ng-model="employee.lastName" />
+            </div>
+        </li>
+    </ul>
+</div>
