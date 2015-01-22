@@ -1,5 +1,6 @@
 ﻿using Entities.Employees;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace DTO.Employees
 {
     public interface IEmployee
@@ -16,7 +17,9 @@ namespace DTO.Employees
     public class Employee : IEmployee
     {
         public long Id { get; set; }
+        [MaxLength(3)]
         public string FirstName { get; set; }
+        [MaxLength(3)]
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
