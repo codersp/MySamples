@@ -129,9 +129,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{ca14a9fa-720f-4ab4-94f0-81107a93a54b}</Project>
-      <Name>Entities</Name>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{a2cc1cd4-5373-4a9c-9c16-803fd5c0337a}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{35eba462-84e5-4fd3-8c15-21f3bd2a4731}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web\Web.csproj">
       <Project>{700697c1-fdbe-41ad-a577-d573c2986db4}</Project>
