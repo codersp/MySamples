@@ -52,9 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee\Employee.cs" />
-    <Compile Include="Employee\IEmployee.cs" />
-    <Compile Include="Employee\MapperProfile.cs" />
+    <Compile Include="Employee\Employee.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Employee\IEmployee.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Employee\MapperProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
