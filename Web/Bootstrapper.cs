@@ -2,7 +2,6 @@ using Microsoft.Practices.Unity;
 using System.Web.Mvc;
 using Unity.Mvc3;
 using Web.Areas.Api.Controllers;
-using Web.Repository;
 
 namespace Web
 {

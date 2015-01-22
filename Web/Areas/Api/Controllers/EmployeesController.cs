@@ -1,8 +1,9 @@
-﻿using Entities.Employees;
+﻿using DTO.Employees;
+using DTO.Repository;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Web.Repository;
+using System.Web.Mvc;
 
 namespace Web.Areas.Api.Controllers
 {
