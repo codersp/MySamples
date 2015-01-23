@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee\Employee.cs">
+    <Compile Include="Employee\EmployeeRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Employee\IEmployee.cs">
+    <Compile Include="Employee\IEmployeeRepository.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Employee\MapperProfile.cs">

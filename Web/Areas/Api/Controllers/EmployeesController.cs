@@ -21,6 +21,11 @@ namespace Web.Areas.Api.Controllers
             return this._context.GetEmployees();
         }
 
+        public Employee GetEmployee(long id)
+        {
+            return this._context.GetEmployeeById(id);
+        }
+
         public async Task<IHttpActionResult> Post(Employee employee)
         {
             if (!ModelState.IsValid)
