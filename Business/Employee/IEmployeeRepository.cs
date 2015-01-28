@@ -11,5 +11,6 @@ namespace DTO.Repository
         Task<Employee> Add(Employee employee);
         Task<bool> Delete(Employee employee);
         Task<Employee> Update(Employee employee);
+        Task<int> ClearAll();
     }
 }

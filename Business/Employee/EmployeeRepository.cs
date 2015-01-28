@@ -1,9 +1,8 @@
-﻿using Entities.Employees;
+﻿using AutoMapper;
+using Entities.Employees;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DTO.Employees;
-using AutoMapper;
 
 namespace DTO.Repository
 {
@@ -82,6 +81,12 @@ namespace DTO.Repository
             throw new System.Data.Entity.Validation.DbEntityValidationException(string.Format("employee with email {0} could not be found", employee.Email));
         }
 
+        public async Task<int> ClearAll()
+        {
+            this.dbContext.Employees.RemoveRange(this.dbContext.Employees);
+            return this.dbContext.SaveChanges();
+        }
+
         protected void Dispose(bool disposing)
         {
             if (disposing)
@@ -99,5 +104,7 @@ namespace DTO.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+
     }
 }

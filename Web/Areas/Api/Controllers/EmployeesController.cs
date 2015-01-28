@@ -45,6 +45,8 @@ namespace Web.Areas.Api.Controllers
                 return this.BadRequest(this.ModelState);
             }
 
+            if (employee.Id == -1)
+                return this.Ok<int>(await Clear());
 
             var result = await this.DeleteAsync(employee);
             return this.Ok<bool>(result);
@@ -57,9 +59,13 @@ namespace Web.Areas.Api.Controllers
                 return this.BadRequest(this.ModelState);
             }
 
-
             var result = await this._context.Update(employee);
             return this.Ok<Employee>(result);
+        }
+
+        private async Task<int> Clear()
+        {
+            return (await this._context.ClearAll());
         }
 
         private async Task<Employee> StoreAsync(Employee employee)
