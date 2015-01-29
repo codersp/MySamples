@@ -44,7 +44,7 @@ namespace DTO.Repository
             this.dbContext.Employees.Add(emp);
             await dbContext.SaveChangesAsync();
 
-            return Mapper.Map<DTO.Employees.Employee>(this.dbContext.Employees.FirstOrDefault(x => x.FirstName == employee.FirstName && x.Email == employee.Email && employee.LastName == employee.LastName));
+            return Mapper.Map<DTO.Employees.Employee>(this.dbContext.Employees.OrderByDescending(x => x.Id).FirstOrDefault());
 
         }
 

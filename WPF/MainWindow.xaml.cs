@@ -1,8 +1,10 @@
 ﻿using DTO.Employees;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,12 +16,14 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-        string address = "http://www.angular.net/api/Employees";
+        List<Task> tasks = new List<Task>();
+        string address = "https://www.angular.net/api/Employees";
         public MainWindow()
         {
             InitializeComponent();
-            var tasks = new List<Task>();
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             List<TodoItem> items = new List<TodoItem>();
             items.Add(new TodoItem() { Title = "Complete this WPF tutorial", Completion = 45 });
             items.Add(new TodoItem() { Title = "Learn C#", Completion = 80 });
@@ -28,10 +32,13 @@ namespace WPF
 
             for (int i = 0; i < 10; i++)
             {
-                tasks.Add(Task.Factory.StartNew(() =>
+                tasks.Add(Task.Factory.StartNew(async () =>
                 {
-                    items.Add(GetTodoItem(i));
+                    var result = await GetTodoItem(tasks.Count);
+                    items.Add(result);
                 }));
+
+                //items.Add(GetTodoItem(i).Result);
             }
 
             //then wait for all tasks to complete asyncronously
@@ -41,11 +48,13 @@ namespace WPF
             //then add the result of all the tasks to r in a treadsafe fashion
         }
 
-        private TodoItem GetTodoItem(int i)
+        private async Task<TodoItem> GetTodoItem(int i)
         {
             TodoItem item = new TodoItem();
             try
             {
+                //using (client = new HttpClient())
+                //{
                 Employee employee = new Employee()
                 {
                     FirstName = i.ToString(),
@@ -59,6 +68,7 @@ namespace WPF
                 string content = result.Result.Content.ReadAsStringAsync().Result;
                 item.Title = content;
                 item.Completion = i;
+                //}
             }
             catch (Exception ex)
             {
@@ -71,7 +81,17 @@ namespace WPF
 
         public StringContent GetEmployee(Employee employee)
         {
-            return new StringContent("{" + string.Format("\"firstName\": \"{0}\", \"lastName\": \"{1}\",\"email\": \"{2}\"", employee.FirstName, employee.LastName, employee.Email) + "}", Encoding.UTF8, "application/json");
+            using (var stream = new System.IO.MemoryStream())
+            {
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Employee));
+                serializer.WriteObject(stream, employee);
+
+
+                var jsonString = Encoding.Default.GetString((stream.ToArray()));
+                return new StringContent(jsonString, Encoding.UTF8, "application/json");
+            }
+
+            return new StringContent(string.Empty, Encoding.UTF8, "application/json");
         }
     }
 
