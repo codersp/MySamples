@@ -1,5 +1,6 @@
 ﻿using DTO.Employees;
 using DTO.Repository;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -16,14 +17,18 @@ namespace Web.Areas.Api.Controllers
             this._context = employeeService;
         }
 
-        public IQueryable<Employee> GetEmployees()
+        public IQueryable<Employee> GetEmployees(long id = 0)
         {
-            return this._context.GetEmployees();
-        }
-
-        public Employee GetEmployee(long id)
-        {
-            return this._context.GetEmployeeById(id);
+            if (id == 0)
+                return this._context.GetEmployees();
+            else
+            {
+                List<Employee> employees = new List<Employee>();
+                var employee = this._context.GetEmployeeById(id);
+                if (employee != null)
+                    employees.Add(employee);
+                return employees.AsQueryable();
+            }
         }
 
         public async Task<IHttpActionResult> Post(Employee employee)

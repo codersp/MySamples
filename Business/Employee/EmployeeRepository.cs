@@ -66,7 +66,7 @@ namespace DTO.Repository
 
         public async Task<DTO.Employees.Employee> Update(DTO.Employees.Employee employee)
         {
-            var updateItem = this.dbContext.Employees.FirstOrDefault(x => x.Email == employee.Email);
+            var updateItem = this.dbContext.Employees.FirstOrDefault(x => x.Id == employee.Id);
 
             if (updateItem != null)
             {

@@ -1,18 +1,51 @@
-﻿myapp.controller('Employees', function ($scope, $http) {
-    $http.get('/api/Employees').success(function (data, status, headers, config) {
-        $scope.EmployeeList = data;
-    }).error(function (data, status, headers, config) {
-        console.log(status);
-    });
-
+﻿myapp.controller('Employees', function ($scope, employeeService) {
+    $scope.EmployeeList = {};
     $scope.UpdateEmployee = function (employee) {
-        console.log(employee);
+        if (employee != null) {
+            var buttonId = '#updateEmployee' + employee.id;
+            var button = $(buttonId);
+            button.prop("disabled", true);
+            button.val('updating...');
+            try {
+                employeeService.patch(employee);
+            } catch (exception) {
+                console.log(exception);
+            }
+        }
+
+        window.setTimeout(function () {
+            button.prop("disabled", false);
+            button.val('Update');
+        }, 2000);
+    };
+
+    $scope.AddEmployee = function (employee) {
         if (employee != null) {
             try {
-                $http.patch('/api/Employees', employee);
+                employeeService.post(employee).success(function (data, status, headers, config) {
+                    $scope.GetEmployees();
+                });
             } catch (exception) {
                 console.log(exception);
             }
         }
     };
+
+    $scope.GetEmployees = function () {
+        employeeService.getEmployees().success(function (data, status, headers, config) {
+            data.push({
+                "firstName": "",
+                "lastName": "",
+                "email": "",
+                "phone": null,
+                "addressId": 0,
+                "addresses": []
+            });
+            $scope.EmployeeList = data;
+        }).error(function (data, status, headers, config) {
+            console.log(status);
+        });
+    };
+
+    $scope.GetEmployees();
 });

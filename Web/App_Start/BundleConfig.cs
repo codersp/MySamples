@@ -19,13 +19,14 @@ namespace Web
                 "~/Scripts/knockout.validation.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                "~/Scripts/sammy-{version}.js",
-                "~/Scripts/app/common.js",
-                "~/Scripts/app/app.datamodel.js",
-                "~/Scripts/app/app.viewmodel.js",
-                "~/Scripts/app/home.viewmodel.js",
-                "~/Scripts/app/_run.js",
+                //"~/Scripts/sammy-{version}.js",
+                //"~/Scripts/app/common.js",
+                //"~/Scripts/app/app.datamodel.js",
+                //"~/Scripts/app/app.viewmodel.js",
+                //"~/Scripts/app/home.viewmodel.js",
+                //"~/Scripts/app/_run.js",
                 "~/Scripts/app/app.js",
+                "~/Scripts/app/services.js",
                 "~/Scripts/app/controllers.js"
                 ));
 
@@ -35,7 +36,8 @@ namespace Web
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/angular-mocks.js",
                 "~/Scripts/angular-loader.js",
-                "~/Scripts/angular-cookies.js"
+                "~/Scripts/angular-cookies.js",
+                "~/Scripts/angular-loader.js"
                 ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -49,7 +51,8 @@ namespace Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/Site.css"));
+                 "~/Content/Site.css",
+                 "~/Content/loading-bar.css"));
         }
     }
 }

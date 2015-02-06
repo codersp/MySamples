@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{6684269A-9D5E-46C4-BCF8-2FD90F2D7614}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{1981339E-896E-4C69-9969-1788B8281513}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6684269A-9D5E-46C4-BCF8-2FD90F2D7614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6684269A-9D5E-46C4-BCF8-2FD90F2D7614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6684269A-9D5E-46C4-BCF8-2FD90F2D7614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1981339E-896E-4C69-9969-1788B8281513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1981339E-896E-4C69-9969-1788B8281513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1981339E-896E-4C69-9969-1788B8281513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1981339E-896E-4C69-9969-1788B8281513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

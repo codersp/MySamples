@@ -17,10 +17,14 @@ namespace DTO.Employees
     public class Employee : IEmployee
     {
         public long Id { get; set; }
-        [MaxLength(3)]
+        [Required]
+        [MaxLength(255)]
         public string FirstName { get; set; }
-        [MaxLength(3)]
+        [Required]
+        [MaxLength(255)]
         public string LastName { get; set; }
+        [Required]
+        [MaxLength(255)]
         public string Email { get; set; }
         public string Phone { get; set; }
         public long AddressId { get; set; }
